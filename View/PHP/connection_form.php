@@ -42,8 +42,9 @@
         $email = $_POST["email_adress"];
 		$password = $_POST["password"];
         $_POST = null;
-
         
+        
+
 	}
 	else
 	{

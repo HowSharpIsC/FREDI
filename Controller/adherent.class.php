@@ -9,11 +9,11 @@
 
         public function __construct($lastName,$firstName,$telephoneNumber,$emailAdress,$password,$gender,$postalAdress,$city,$zipCode)
         {
-            $this->setLastName($lastName);
-            $this->setFirstName($firstName);
-            $this->setTelNum($telephoneNumber);
-            $this->setEmailAdress($emailAdress);
-            $this->setPassword($password);
+            $this->lastName = $lastName;
+            $this->firstName = $firstName;
+            $this->telephoneNumber = $telephoneNumber;
+            $this->emailAdress = $emailAdress;
+            $this->password = $password;
             $this->gender = $gender;
             $this->postalAdress = $postalAdress;
             $this->city = $city;

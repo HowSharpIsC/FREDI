@@ -17,13 +17,16 @@
 		</div>
 
 		<div>
-            <?php
-                if (empty($_SESSION)) {
-                    require("connection_form.php");
-                }
-                else {
-                    //TODO
-                }
+		<?php
+				if (empty($_GET))
+				{
+					require("connection_form.php");
+				}
+				else
+				{
+					$page = $_GET["page"];
+					require("$page.php");
+				}
 			?>
 		</div>
 
