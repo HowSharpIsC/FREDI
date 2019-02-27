@@ -1,23 +1,35 @@
 <?php
 
+    require("person.class.php");
+    require("../../Controller/Function/function.php");
+
     class Adherent extends Person
     {
         private $gender;
         private $postalAdress;
         private $city;
         private $zipCode;
+        private $subscriptionDate;
+        private $league;
 
-        public function __construct($lastName,$firstName,$telephoneNumber,$emailAdress,$password,$gender,$postalAdress,$city,$zipCode)
+        public function __construct($lastName,$firstName,$telephoneNumber,$emailAdress,
+                                    $password,$gender,$postalAdress,$city,
+                                    $zipCode,$league)
         {
-            $this->lastName = $lastName;
-            $this->firstName = $firstName;
-            $this->telephoneNumber = $telephoneNumber;
-            $this->emailAdress = $emailAdress;
-            $this->password = $password;
+            $this->setLastName($lastName);
+            $this->setFirstName($firstName);
+            $this->setTelNum($telephoneNumber);
+            $this->setEmailAdress($emailAdress);
+            $this->setPassword(password_hash($password,PASSWORD_BCRYPT));
             $this->gender = $gender;
             $this->postalAdress = $postalAdress;
             $this->city = $city;
             $this->zipCode = $zipCode;
+            $this->league = $league;
+            $this->subscriptionDate = date("Y-m-d");
+
+            // Insertion of new adherent's data in database
+            self::newAdherent();
         }
 
         public function getPostalAdress()
@@ -48,6 +60,39 @@
         public function setZipCode($arg)
         {
             $this->zipCode = $arg;
+        }
+
+        private function newAdherent()
+        {
+            try {
+                $pdo = connection("fredi", "localhost", "adminfredi", "iderf");
+            
+                $sql = "INSERT INTO adherents (adh_nom,adh_prenom,adh_sexe,adh_date,
+                                                adh_adr,adh_ville,adh_cp,adh_num,
+                                                adh_email,adh_mdp,lg_id)
+                                    VALUES (:lastName,:firstName,:gender,:subscriptionDate,
+                                            :postalAdress,:city,:zipCode,:telephoneNumber,
+                                            :emailAdress,:pw,:league)";        
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([
+                    "lastName" => $this->lastName,
+                    "firstName" => $this->firstName,
+                    "gender" => $this->gender,
+                    "subscriptionDate" => $this->subscriptionDate,
+                    "postalAdress" => $this->postalAdress,
+                    "city" => $this->city,
+                    "zipCode" => $this->zipCode,
+                    "telephoneNumber" => $this->telephoneNumber,
+                    "emailAdress" => $this->emailAdress,
+                    "pw" => $this->password,
+                    "league" => $this->league   
+                ]);
+            } catch (exception $th) {
+                throw $th;
+            } finally {
+                $pdo = null;
+                $stmt = null;
+            }
         }
     }
 

@@ -20,7 +20,7 @@
                         <label for="password">Mot de passe : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="pw" name="password">
+                        <input type="password" id="pw" name="password">
                     </div>
                 </div>
                 <div class="row">
@@ -43,7 +43,15 @@
 		$password = $_POST["password"];
         $_POST = null;
         
-        
+        try {
+            require("../../Controller/Function/function.php");
+
+            echo signIn($email,$password);
+            echo "Connexion réussie";
+
+        } catch (exception $th) {
+            throw $th;
+        }
 
 	}
 	else
