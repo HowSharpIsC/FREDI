@@ -1,3 +1,19 @@
-.container {
-    color: green;
+html { 
+    margin:0;
+    padding:0;
+    background-image: url("../../Ressources/back.jpg");
+    background-repeat:no-repeat; 
 }
+
+.corps {
+    text-align: center;
+    margin: auto;
+}
+
+.container {
+    margin: auto;
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+

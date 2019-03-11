@@ -11,30 +11,32 @@
 	</head>
 
 	<body>
-		<div id="header">
+		<div class="col-sm-6 col-sm-push-3 corps">
+			<div id="header">
+				<?php
+					require("header.php");
+				?>
+			</div>
+
+			<div>
 			<?php
-				require("header.php");
-			?>
-		</div>
+					if (empty($_GET))
+					{
+						require("connection_form.php");
+					}
+					else
+					{
+						$page = $_GET["page"];
+						require("$page.php");
+					}
+				?>
+			</div>
 
-		<div>
-		<?php
-				if (empty($_GET))
-				{
-					require("connection_form.php");
-				}
-				else
-				{
-					$page = $_GET["page"];
-					require("$page.php");
-				}
-			?>
-		</div>
-
-		<div id="footer">
-            <?php
-                require("footer.php")
-            ?>
+			<div id="footer">
+				<?php
+					require("footer.php")
+				?>
+			</div>
 		</div>
 	</body>
 </html>
