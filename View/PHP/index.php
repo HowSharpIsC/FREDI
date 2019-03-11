@@ -7,6 +7,7 @@
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
 		<link href="../bootstrap-4.3.1-dist/css/bootstrap-grid.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="../bootstrap-4.3.1-dist/css/index.css" rel="stylesheet" type="text/css" media="all" />
 	</head>
 
 	<body>
