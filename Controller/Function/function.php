@@ -37,7 +37,7 @@
         // Wrong email address
         if(!$result)
         {
-            return $failToConnect;
+            throw new Exception($failToConnect);
         }
         else
         {
@@ -52,7 +52,7 @@
             else
             {
                 // Wrong password
-                return $failToConnect;
+                throw new Exception($failToConnect);
             }
         }
     }

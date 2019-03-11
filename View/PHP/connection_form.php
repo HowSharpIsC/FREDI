@@ -49,8 +49,8 @@
             echo signIn($email,$password);
             echo "Connexion réussie";
 
-        } catch (exception $th) {
-            throw $th;
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
 
 	}
