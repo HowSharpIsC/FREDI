@@ -49,6 +49,8 @@
             echo signIn($email,$password);
             echo "Connexion réussie";
 
+            header("Location: index.php?page=profile");
+
         } catch (Exception $e) {
             echo $e->getMessage();
         }

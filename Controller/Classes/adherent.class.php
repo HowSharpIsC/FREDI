@@ -27,9 +27,6 @@
             $this->zipCode = $zipCode;
             $this->league = $league;
             $this->subscriptionDate = date("Y-m-d");
-
-            // Insertion of new adherent's data in database
-            self::newAdherent();
         }
 
         public function getPostalAdress()
@@ -62,7 +59,7 @@
             $this->zipCode = $arg;
         }
 
-        private function newAdherent()
+        public function newAdherent()
         {
             try {
                 $pdo = connection("fredi", "localhost", "adminfredi", "iderf");
@@ -87,8 +84,8 @@
                     "pw" => $this->password,
                     "league" => $this->league   
                 ]);
-            } catch (exception $th) {
-                throw $th;
+            } catch (Exception $e) {
+                throw $e;
             } finally {
                 $pdo = null;
                 $stmt = null;

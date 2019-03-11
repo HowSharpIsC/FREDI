@@ -107,12 +107,15 @@
         try {
             require("../../Controller/Classes/adherent.class.php");
 
-            new Adherent($lastName,$firstName,$telephoneNumber,$email,
+            $adherent = new Adherent($lastName,$firstName,$telephoneNumber,$email,
                             $password,$gender,$postalAdress,$city,
                             $zipCode,$league);
 
-        } catch (exception $th) {
-            throw $th;
+            // Insertion of new adherent's data in database
+            $adherent->newAdherent();
+
+        } catch (Exception $e) {
+            throw $e;
         }
 
 	}

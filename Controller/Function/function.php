@@ -17,14 +17,19 @@
         // Connection to database
         $pdo = connection("fredi", "localhost", "userfredi", "useriderf");
         
-        // User id and password recovery
-        $sql = "SELECT adh_id, adh_mdp FROM adherents WHERE adh_email = :email";
+        // User data recovery
+        $sql = "SELECT adh_id,adh_nom,adh_prenom,adh_adr,
+                        adh_ville,adh_cp,adh_num,adh_email,
+                        adh_mdp,lg_id 
+                FROM adherents 
+                WHERE adh_email = :email";
         $stmt = $pdo->prepare($sql);
         
         $stmt->execute([
             "email" => $email
         ]);
         
+        // Method fetch() returns false if there is no line returned by the request
         $result = $stmt->fetch();
 
         // Closing connection with the database
@@ -47,6 +52,7 @@
             {
                 session_start();
                 $_SESSION["id"] = $result["adh_id"];
+                
                 return;
             }
             else
@@ -55,5 +61,20 @@
                 throw new Exception($failToConnect);
             }
         }
+    }
+
+    /*
+    *   User Disconnection
+    */
+    function signOut()
+    {
+        // Loading actual session
+        session_start();
+
+        // Wiping $_SESSION variable data
+        $_SESSION = array();
+
+        // Ending actual session
+        session_destroy();
     }
 ?>
