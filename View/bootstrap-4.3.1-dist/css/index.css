@@ -5,15 +5,27 @@ html {
     background-repeat:no-repeat; 
 }
 
-.corps {
-    text-align: center;
-    margin: auto;
+body {
+    background-color: transparent;
 }
+
+
 
 .container {
     margin: auto;
     display: inline-block;
     width: auto;
     vertical-align: middle;
+}
+
+.card {
+    width: 40%;
+    text-align: center;
+    margin: auto;
+    background-color: transparent;
+}
+
+.card-header {
+    width: auto;
 }
 

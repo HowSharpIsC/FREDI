@@ -25,7 +25,7 @@
                 </div>
                 <div class="row">
                     <div class="col-auto">
-                        <input type="submit" id="validation" name="connection_Form_Validation" value="Connexion">
+                        <input type="submit" id="validation" name="connection_Form_Validation" value="Connexion" class="btn btn-primary">
                     </div>
                 </div>
             </div>
