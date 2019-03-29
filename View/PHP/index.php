@@ -16,27 +16,6 @@
 	</head>
 
 	<body>
-<<<<<<< HEAD
-		<div id="header">
-			<?php
-				require("header.php");
-			?>
-		</div>
-
-		<div>
-		<?php
-				if (empty($_GET) || empty($_SESSION))
-				{
-					require("connection_form.php");
-				}
-				else
-				{
-					$page = $_GET["page"];
-					require("$page.php");
-				}
-			?>
-		</div>
-=======
 		<div class="card">
 			<div class="card-header">
 				<div id="header">
@@ -60,7 +39,6 @@
 					?>
 				</div>
 			</div>
->>>>>>> bd66eda649fe9d8fd4f9c66b5699f75420e47256
 
 			<div id="footer">
 				<?php
