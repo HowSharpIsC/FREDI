@@ -1,7 +1,7 @@
 <?php
 
     require("person.class.php");
-    require("../../Controller/Function/function.php");
+    require("../dal/dbInit.php");
 
     class Adherent extends Person
     {
@@ -62,7 +62,7 @@
         public function newAdherent()
         {
             try {
-                $pdo = connection("fredi", "localhost", "adminfredi", "iderf");
+                $pdo = connection();
             
                 $sql = "INSERT INTO adherents (adh_nom,adh_prenom,adh_sexe,adh_date,
                                                 adh_adr,adh_ville,adh_cp,adh_num,

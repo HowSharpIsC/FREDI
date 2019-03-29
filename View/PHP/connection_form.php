@@ -37,28 +37,19 @@
 	//test if connection button has been activated
 	if(!empty($_POST["connection_Form_Validation"]))
 	{
-		$_valid = "Formulaire validé";
-
         $email = $_POST["email_adress"];
 		$password = $_POST["password"];
         $_POST = null;
         
         try {
-            require("../../Controller/Function/function.php");
+            require("../../Controller/dal/dbInit.php");
 
             echo signIn($email,$password);
-            echo "Connexion réussie";
 
             header("Location: index.php?page=profile");
 
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-
-	}
-	else
-	{
-		$_valid = "";
-		echo $_valid;
 	}
 ?>

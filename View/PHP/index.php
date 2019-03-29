@@ -19,7 +19,7 @@
 
 		<div>
 		<?php
-				if (empty($_GET))
+				if (empty($_GET) || empty($_SESSION))
 				{
 					require("connection_form.php");
 				}

@@ -89,8 +89,6 @@
 	//test if connection button has been activated
 	if(!empty($_POST["creation_Form_Validation"]))
 	{
-		$_valid = "Formulaire validé";
-
         $email = $_POST["email_address"];
         $password = $_POST["password"];
         $gender = $_POST["gender"];
@@ -108,8 +106,8 @@
             require("../../Controller/Classes/adherent.class.php");
 
             $adherent = new Adherent($lastName,$firstName,$telephoneNumber,$email,
-                            $password,$gender,$postalAdress,$city,
-                            $zipCode,$league);
+                                    $password,$gender,$postalAdress,$city,
+                                    $zipCode,$league);
 
             // Insertion of new adherent's data in database
             $adherent->newAdherent();
@@ -117,11 +115,6 @@
         } catch (Exception $e) {
             throw $e;
         }
+	}
 
-	}
-	else
-	{
-		$_valid = "";
-		echo $_valid;
-	}
 ?>
