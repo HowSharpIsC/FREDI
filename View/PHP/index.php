@@ -13,6 +13,7 @@
         <link href="../bootstrap-4.3.1-dist/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <link href="../bootstrap-4.3.1-dist/css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all" />	
         <link href="../bootstrap-4.3.1-dist/css/index.css" rel="stylesheet" type="text/css" media="all" />
+        <script type="text/javascript" src="../JS/jQuery3.3.1.js"></script>
     </head>
     
     <body>
