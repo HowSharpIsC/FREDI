@@ -86,35 +86,35 @@
 </html>
 
 <?php
-	//test if connection button has been activated
-	if(!empty($_POST["creation_Form_Validation"]))
-	{
-        $email = $_POST["email_address"];
-        $password = $_POST["password"];
-        $gender = $_POST["gender"];
-        $postalAdress = $_POST["postal_address"];
-        $city = $_POST["city"];
-        $zipCode = $_POST["zip_code"];
-        $league = $_POST["league"];
-        $lastName = $_POST["last_name"];
-        $firstName = $_POST["first_name"];
-        $telephoneNumber = $_POST["telephone_number"];
+/**
+ * Test if connection button has been activated
+ */
+if (!empty($_POST["creation_Form_Validation"])) {
+    $email = $_POST["email_address"];
+    $password = $_POST["password"];
+    $gender = $_POST["gender"];
+    $postalAdress = $_POST["postal_address"];
+    $city = $_POST["city"];
+    $zipCode = $_POST["zip_code"];
+    $league = $_POST["league"];
+    $lastName = $_POST["last_name"];
+    $firstName = $_POST["first_name"];
+    $telephoneNumber = $_POST["telephone_number"];
+    $_POST = null;
+    
+    try {
+        include "../../Controller/Classes/adherent.class.php";
 
-        $_POST = null;
-        
-        try {
-            require("../../Controller/Classes/adherent.class.php");
+        $adherent = new Adherent(
+            $lastName, $firstName, $telephoneNumber, $email,
+            $password, $gender, $postalAdress, $city,
+            $zipCode, $league
+        );
 
-            $adherent = new Adherent($lastName,$firstName,$telephoneNumber,$email,
-                                    $password,$gender,$postalAdress,$city,
-                                    $zipCode,$league);
-
-            // Insertion of new adherent's data in database
-            $adherent->newAdherent();
-
-        } catch (Exception $e) {
-            throw $e;
-        }
-	}
-
+        // Insertion of new adherent's data in database
+        $adherent->newAdherent();
+    } catch (Exception $e) {
+        throw $e;
+    }
+}
 ?>

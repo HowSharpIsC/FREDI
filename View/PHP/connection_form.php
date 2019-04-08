@@ -34,22 +34,23 @@
 </html>
 
 <?php
-	//test if connection button has been activated
-	if(!empty($_POST["connection_Form_Validation"]))
-	{
-        $email = $_POST["email_adress"];
-		$password = $_POST["password"];
-        $_POST = null;
-        
-        try {
-            require("../../Controller/dal/dbInit.php");
+/**
+ * Test if connection button has been activated
+ */
+if (!empty($_POST["connection_Form_Validation"])) {
+    $email = $_POST["email_adress"];
+    $password = $_POST["password"];
+    $_POST = null;
+    
+    try {
+        include "../../Model/dal/dbInit.php";
 
-            echo signIn($email,$password);
+        signIn($email, $password);
 
-            header("Location: index.php?page=profile");
+        header("Location: index.php?page=profile");
 
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-	}
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
 ?>
