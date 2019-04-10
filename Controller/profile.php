@@ -27,10 +27,10 @@
                 <label for="Adress"> Adresse :</label>
             </div>
             <div class="col-auto">
-                <label for="Adress" name="actual"> <?php echo $_SESSION["Adress"] ?> </label>
+                <label for="Adress" name="actual"> <?php echo $_SESSION["Address"] ?> </label>
             </div>
             <div class="col-auto" name="modify" hidden>
-                <input type="text" id="Adress" value = <?php echo $_SESSION["Adress"] ?>>
+                <input type="text" id="Adress" value = <?php echo $_SESSION["Address"] ?>>
             </div>
         </div>
         <div class="row">
@@ -91,6 +91,9 @@
             </div>
             <div class="col-auto" name="modify" hidden>
                 <input type="button" id="cancelModifications" value="Annuler" class="btn btn-primary">
+            </div>
+            <div class="col-auto" name="cerfa">
+                <input type="button" id="cerfa" value="télécharger CERFA" class="btn btn-primary">
             </div>
         </div>
     </div>
@@ -159,6 +162,19 @@ cancel.addEventListener("mouseup", function(){
     var toHide = document.getElementsByName("actual");
     toHide.forEach(elementToShow => {
         elementToShow.hidden = false;
+    });
+});
+
+var cerfa = document.getElementById("cerfa");
+
+cerfa.addEventListener("mouseup", function() {
+    $.ajax({
+        url: "../../Model/PDF/ghostfly/pdf-forms-filler/example/pdfGeneration.php",
+        method: "POST",
+        dataType: "text",
+        success: function() {
+            window.open("../../Model/PDF/ghostfly/pdf-forms-filler/example/FormFilled.pdf", 'Download');
+        }
     });
 });
 
