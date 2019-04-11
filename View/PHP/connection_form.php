@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-auto">
-                        <p>Se connecter : </p>
+                        <p>Se connecter</p>
                     </div>
                 </div>
                 <div class="row">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="row">
                     <div class="col-auto">
-                        <label for="password">Mot de passe : </label>
+                        <label for="password">Mot de passe :</label>
                     </div>
                     <div class="col-auto">
                         <input type="password" id="pw" name="password">
