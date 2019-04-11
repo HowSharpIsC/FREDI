@@ -28,9 +28,28 @@ function signIn($email,$pw)
     
     $failToConnect = "L'adresse e-mail ou le mot de passe est incorrect.";
 
-    // Wrong email address
+    // Not an adherent
     if (!$adherentFound) {
-        throw new Exception($failToConnect);
+        $treasurerFound = treasurerSelection($email);
+
+        // Not a treasurer
+        if (!$treasurerFound) {
+            throw new Exception($failToConnect);
+        } else {
+            $isPasswordCorrect = password_verify($pw, $treasurerFound["trs_mdp"]);
+            if ($isPasswordCorrect) {
+                session_start();
+                
+                $_SESSION["id"] = $adherentFound["adh_id"];
+                $_SESSION["LastName"] = $adherentFound["adh_nom"];
+                $_SESSION["FirstName"] = $adherentFound["adh_prenom"];
+                
+                return;
+            } else {
+                // Wrong password
+                throw new Exception($failToConnect);
+            }
+        }
     } else {
         $isPasswordCorrect = password_verify($pw, $adherentFound["adh_mdp"]);
         if ($isPasswordCorrect) {
@@ -44,7 +63,7 @@ function signIn($email,$pw)
             $_SESSION["ZipCode"] = $adherentFound["adh_cp"];
             $_SESSION["Tel"] = $adherentFound["adh_num"];
             $_SESSION["Email"] = $adherentFound["adh_email"];
-            $_SESSION["League"] = $adherentFound["lg_id"];
+            $_SESSION["League"] = $adherentFound["lg_nom"];
             
             return;
         } else {
@@ -63,9 +82,12 @@ function signOut()
     session_start();
 
     // Wiping $_SESSION variable data
-    $_SESSION = array();
+    session_unset();
 
     // Ending actual session
     session_destroy();
+
+    // Redirecting user to homepage
+    header('location: ../../View/PHP/index.php');
 }
 ?>

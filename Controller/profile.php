@@ -79,7 +79,7 @@
         </div>
         <div class="row">
             <div class="col-auto">
-                <label for="League" name="actual"> Ligue sportive :<?php echo $_SESSION["League"] ?> </label>
+                <label for="League" name="actual"> Ligue sportive : <?php echo $_SESSION["League"] ?> </label>
             </div>
         </div>
         <div class="row">
@@ -130,7 +130,7 @@ register.addEventListener("mouseup", function(){
     var mail = document.getElementById("Email").value;
 
     $.ajax({
-        url: "../../Model/dal/dbAdherentMod.php",
+        url: "Model/dal/dbAdherentMod.php",
         method: "POST",
         data: { lastName: lName, firstName: fName, adress: postalAdress,
             city: location, zipCode: zCode, telephone: tel, email: mail },
@@ -169,11 +169,11 @@ var cerfa = document.getElementById("cerfa");
 
 cerfa.addEventListener("mouseup", function() {
     $.ajax({
-        url: "../../Model/PDF/ghostfly/pdf-forms-filler/example/pdfGeneration.php",
+        url: "Model/PDF/ghostfly/pdf-forms-filler/example/pdfGeneration.php",
         method: "POST",
         dataType: "text",
         success: function() {
-            window.open("../../Model/PDF/ghostfly/pdf-forms-filler/example/FormFilled.pdf", 'Download');
+            window.open("Model/PDF/ghostfly/pdf-forms-filler/example/FormFilled.pdf", 'Download');
         }
     });
 });

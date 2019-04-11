@@ -43,7 +43,7 @@ if (!empty($_POST["connection_Form_Validation"])) {
     $_POST = null;
     
     try {
-        include "../../Model/dal/dbInit.php";
+        include "Model/dal/dbInit.php";
 
         signIn($email, $password);
 

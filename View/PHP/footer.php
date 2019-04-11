@@ -1,3 +1,3 @@
 <?php
-    require "../../Controller/footer.php";
+    require "Controller/footer.php";
 ?>
