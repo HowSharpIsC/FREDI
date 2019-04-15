@@ -22,6 +22,11 @@ foreach ($fields as $field) {
         echo "page undefined for field" . $field;
     }
 }
+
+$lastName = $_SESSION["LastName"];
+$firstName = $_SESSION["FirstName"];
+$year = date("Y", time());
+
 $data = [
   'z1'    => [
       "size"  => 9,
@@ -99,13 +104,13 @@ $data = [
       "size"  => 9,
       'family'  => 'Helvetica',
       "style" => 'B',
-      'value' => $_SESSION["LastName"]
+      'value' => $lastName
   ],
   'z30'   => [
       "size"  => 9,
       'family'  => 'Helvetica',
       "style" => 'B',
-      'value' => $_SESSION["FirstName"]
+      'value' => $firstName
   ],
   'z31'   => [
       "size"  => 9,
@@ -183,12 +188,12 @@ $data = [
       "size"  => 9,
       'family'  => 'Helvetica',
       "style" => 'B',
-      'value' => date("Y", time())
+      'value' => $year
   ],
 ];
 
 $original = getcwd() . "/cerfa.pdf";
-$dest = getcwd() . "/FormFilled.pdf";
+$dest = "../../../../../View/Ressources/CERFA/$lastName-$firstName-$year.pdf";
 
 $pdfGenerator = new PDFGenerator($fieldEntities, $data, 'P', 'pt', 'A4');
 

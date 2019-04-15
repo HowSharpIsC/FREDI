@@ -119,10 +119,11 @@ modify.addEventListener("mouseup", function(){
     });
 });
 
+var lName = document.getElementById("LastName").value;
+var fName = document.getElementById("FirstName").value;
+
 register.addEventListener("mouseup", function(){
 
-    var lName = document.getElementById("LastName").value;
-    var fName = document.getElementById("FirstName").value;
     var postalAdress = document.getElementById("Adress").value;
     var location = document.getElementById("City").value;
     var zCode = document.getElementById("ZipCode").value;
@@ -166,6 +167,8 @@ cancel.addEventListener("mouseup", function(){
 });
 
 var cerfa = document.getElementById("cerfa");
+var filledCerfa = "View/Ressources/CERFA/" + lName + "-" + fName + "-" + 
+    new Date().getFullYear() + ".pdf";
 
 cerfa.addEventListener("mouseup", function() {
     $.ajax({
@@ -173,7 +176,7 @@ cerfa.addEventListener("mouseup", function() {
         method: "POST",
         dataType: "text",
         success: function() {
-            window.open("Model/PDF/ghostfly/pdf-forms-filler/example/FormFilled.pdf", 'Download');
+            window.open(filledCerfa, 'Download');
         }
     });
 });
