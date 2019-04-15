@@ -28,6 +28,8 @@
             <div class="card-body">
                 <div>
                     <?php
+                    require "Model/functions/pages.php";
+                    require "Model/functions/signOut.php";
                     if (empty($_GET)) {
                         include "View/PHP/connection_form.php";
                     } else {

@@ -43,6 +43,7 @@ function signIn($email,$pw)
                 $_SESSION["id"] = $adherentFound["adh_id"];
                 $_SESSION["LastName"] = $adherentFound["adh_nom"];
                 $_SESSION["FirstName"] = $adherentFound["adh_prenom"];
+                $_SESSION["user"] = 1;
                 
                 return;
             } else {
@@ -64,6 +65,7 @@ function signIn($email,$pw)
             $_SESSION["Tel"] = $adherentFound["adh_num"];
             $_SESSION["Email"] = $adherentFound["adh_email"];
             $_SESSION["League"] = $adherentFound["lg_nom"];
+            $_SESSION["user"] = 0;
             
             return;
         } else {
@@ -71,23 +73,5 @@ function signIn($email,$pw)
             throw new Exception($failToConnect);
         }
     }
-}
-
-/**
- *   User Disconnection
- */
-function signOut()
-{
-    // Loading actual session
-    session_start();
-
-    // Wiping $_SESSION variable data
-    session_unset();
-
-    // Ending actual session
-    session_destroy();
-
-    // Redirecting user to homepage
-    header('location: ../../View/PHP/index.php');
 }
 ?>

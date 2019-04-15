@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (empty($_SESSION)) {
-    header("Location: index.php?page=connection_form");
+if (!$_SESSION["user"] === 0) {
+    redirectPHP("page=connection_form");
 } else {
     include "Controller/profile.php";
 }

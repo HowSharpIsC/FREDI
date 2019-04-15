@@ -1,3 +1,10 @@
+<?php
+
+if (empty($_SESSION) || !$_SESSION["user"] === 0) {
+    redirectPhp("connection_form");
+}
+?>
+
 <html>
     <div class="container">
         <div class="row">
@@ -93,12 +100,25 @@
                 <input type="button" id="cancelModifications" value="Annuler" class="btn btn-primary">
             </div>
             <div class="col-auto" name="cerfa">
-                <input type="button" id="cerfa" value="télécharger CERFA" class="btn btn-primary">
+                <input type="button" id="cerfa" value="Télécharger CERFA" class="btn btn-primary">
             </div>
+            <form id="disconnectionForm" name="user disconnection form" action="" method="POST">
+                <div class="col-auto" name="signOut">
+                    <input type="submit" id="signOut" name="signOut" value="Déconnexion" class="btn btn-primary">
+                </div>
+            </form>
         </div>
     </div>
     <div>
 </html>
+
+<?php
+
+if (!empty($_POST["signOut"])) {
+    signOut();
+}
+
+?>
 
 <script>
 
@@ -180,5 +200,4 @@ cerfa.addEventListener("mouseup", function() {
         }
     });
 });
-
 </script>

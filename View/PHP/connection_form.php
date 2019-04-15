@@ -47,7 +47,11 @@ if (!empty($_POST["connection_Form_Validation"])) {
 
         signIn($email, $password);
 
-        header("Location: index.php?page=profile");
+        if ($_SESSION["user"]) {
+            
+        } else {
+            redirectScript("profile");
+        }
 
     } catch (Exception $e) {
         echo $e->getMessage();
