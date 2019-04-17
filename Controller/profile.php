@@ -3,6 +3,8 @@
 if (empty($_SESSION) || !$_SESSION["user"] === 0) {
     redirectPhp("connection_form");
 }
+
+require "Model/functions/PHP/signOut.php";
 ?>
 
 <html>

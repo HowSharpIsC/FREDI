@@ -28,10 +28,10 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                 </div>
                 <div class="row">
                     <div class="col-auto">
-                        <label for="journey">Trajet : </label>
+                        <label for="journey">Trajet :</label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="journey" name="journey" value=0>
+                        <input type="text" id="journey" name="journey" placeholder="Metz-Paris" required>
                     </div>
                 </div>
                 <div class="row">
@@ -39,7 +39,23 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                         <label for="fraisKm">Kilomètres : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="Kilometers" name="Km" value=0>
+                        <input type="text" id="kilometers" name="km" placeholder=332 size=2>
+                        <span>km</span>
+                    </div>
+                </div>
+                <div class="row" id="power" hidden>
+                    <div class="col-auto">
+                        <label for="power">Puissance administrative du véhicule:</label>
+                    </div>
+                    <div class="col-auto">
+                        <select id="slctPower" name="power">
+                            <option value=0>--Choisissez la puissance--</option>
+                            <option value=3>3 CV ou moins</option>
+                            <option value=4>4 CV</option>
+                            <option value=5>5 CV</option>
+                            <option value=6>6 CV</option>
+                            <option value=7>7 CV ou plus</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -47,7 +63,8 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                         <label for="lodging">Hébergement : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="lodging" name="lodging" value=0>
+                        <input type="text" id="lodging" name="lodging" placeholder=50 size=2>
+                        <span>€</span>
                     </div>
                 </div>
                 <div class="row">
@@ -55,7 +72,8 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                         <label for="food">Repas : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="food" name="food" value=0>
+                        <input type="text" id="food" name="food" placeholder=5 size=2>
+                        <span>€</span>
                     </div>
                 </div>
                 <div class="row">
@@ -63,7 +81,8 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                         <label for="toll">Péage : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="toll" name="toll" value=0>
+                        <input type="text" id="toll" name="toll" placeholder=26 size=2>
+                        <span>€</span>
                     </div>
                 </div>
                 <div class="row">
@@ -76,12 +95,34 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
     </div>
 </html>
 
+<script>
+
+var divPower = document.getElementById("power");
+var slctPower = document.getElementById("slctPower");
+var km = document.getElementById("kilometers");
+var validation = document.getElementById("validation");
+
+validation.addEventListener("click", validatePower);
+validation.addEventListener("click", validateKm);
+
+km.addEventListener("keyup", function() {
+
+    if (km.value != "") {
+        divPower.hidden = false;
+    } else {
+        divPower.hidden = true;
+    }
+});
+
+</script>
+
 <?php
 
 if (!empty($_POST["travel_expenses_validation"])) {
     $date = $_POST["date"];
     $journey = $_POST["journey"];
-    $km = $_POST["Km"];
+    $power = $_POST["power"];
+    $km = $_POST["km"];
     $lodging = $_POST["lodging"];
     $food = $_POST["food"];
     $toll = $_POST["toll"];
@@ -90,6 +131,9 @@ if (!empty($_POST["travel_expenses_validation"])) {
 
     try {
         include "Model/dal/dbExpenses.php";
+        include "Model/functions/PHP/expenses.php";
+
+        $km = kilometerCost($km, $power);
 
         expenseStatement($date, $journey, $km, $lodging, $food, $toll);
 

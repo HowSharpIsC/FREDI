@@ -14,6 +14,7 @@
         <link href="View/bootstrap-4.3.1-dist/css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all" />	
         <link href="View/bootstrap-4.3.1-dist/css/index.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" src="View/JS/jQuery3.3.1.js"></script>
+        <script type="text/javascript" src="Model/functions/JS/validation.js"></script>
     </head>
     
     <body>
@@ -28,8 +29,7 @@
             <div class="card-body">
                 <div>
                     <?php
-                    require "Model/functions/pages.php";
-                    require "Model/functions/signOut.php";
+                    require "Model/functions/PHP/pages.php";
                     if (empty($_GET)) {
                         include "View/PHP/connection_form.php";
                     } else {

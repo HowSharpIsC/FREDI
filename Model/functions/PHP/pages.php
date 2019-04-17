@@ -6,7 +6,7 @@
 function redirectPhp($page)
 {
     header('Location: index.php?page=' . $page);
-    exit;
+    //exit;
 }
 
 /**
