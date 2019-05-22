@@ -1,7 +1,8 @@
 <?php
 
-function expenseStatement($date, $journey, $km, $lodging, $food, $toll)
-{
+function expenseStatement($reason, $date, $journey, $km, $kmCost, $rate,
+    $lodging, $food, $toll
+) {
     include_once "dbInit.php";
     
     $id = $_SESSION["id"];
@@ -9,8 +10,9 @@ function expenseStatement($date, $journey, $km, $lodging, $food, $toll)
     $pdo = connection();
 
     $sql = "INSERT INTO frais (frs_date, frs_trjt, frs_km, frs_hbg, frs_repas, 
-                                frs_peage,adh_id)
-            VALUES  (:expDate, :journey, :km, :lodging, :food, :toll, :id)";
+                                frs_peage,adh_id, mtf_id, frs_distance, frs_tauxKm)
+            VALUES  (:expDate, :journey, :kmCost, :lodging, :food, :toll, :adhId, 
+                    :mtfId, :distance, :rate)";
 
     $stmt = $pdo->prepare($sql);
 
@@ -18,16 +20,48 @@ function expenseStatement($date, $journey, $km, $lodging, $food, $toll)
         [
         "expDate" => $date,
         "journey" => $journey,
-        "km" => $km,
+        "kmCost" => $kmCost,
         "lodging" => $lodging,
         "food" => $food,
         "toll" => $toll,
-        "id" => $id
+        "adhId" => $id,
+        "mtfId" => $reason,
+        "distance" => $km,
+        "rate" => $rate
         ]
     );
 
     $stmt = null;
     $pdo = null;
+}
+
+function getExpenses()
+{
+    include_once "dbInit.php";
+    
+    $id = $_SESSION["id"];
+
+    $pdo = connection();
+
+    $sql = "SELECT frs_date, mtf_libelle, frs_trjt, frs_distance, frs_tauxKm, 
+                frs_km, frs_hbg, frs_repas, frs_peage
+            FROM frais NATURAL JOIN motifs
+            WHERE adh_id = :id";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute(
+        [
+        "id" => $id
+        ]
+    );
+
+    $expenses = $stmt->fetchAll();
+
+    $stmt = null;
+    $pdo = null;
+
+    return $expenses;
 }
 
 ?>

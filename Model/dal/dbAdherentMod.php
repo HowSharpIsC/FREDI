@@ -5,7 +5,7 @@ session_start();
 
 $lName = $_POST["lastName"];
 $fName = $_POST["firstName"];
-$postalAdress = $_POST["adress"];
+$postalAddress = $_POST["adress"];
 $city = $_POST["city"];
 $zCode = $_POST["zipCode"];
 $tel = $_POST["telephone"];
@@ -27,7 +27,7 @@ try {
         [
         "lastName" => $lName,
         "firstName" => $fName,
-        "adress" => $postalAdress,
+        "adress" => $postalAddress,
         "city" => $city,
         "zipCode" => $zCode,
         "telephone" => $tel,

@@ -1,6 +1,6 @@
 <?php
 
-if (empty($_SESSION) || !$_SESSION["user"] === 0) {
+if (empty($_SESSION) || !$_SESSION["user"] === 2) {
     redirectPhp("connection_form");
 }
 
@@ -88,7 +88,7 @@ require "Model/functions/PHP/signOut.php";
         </div>
         <div class="row">
             <div class="col-auto">
-                <label for="League" name="actual"> Ligue sportive : <?php echo $_SESSION["League"] ?> </label>
+                <label for="League" name="actual"> Club : <?php echo $_SESSION["Club"] ?> </label>
             </div>
         </div>
         <div class="row">

@@ -12,7 +12,7 @@
                         <label for="email">Adresse mail : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="mail" name="email_adress" required>
+                        <input type="text" id="mail" name="email_address" required>
                     </div>
                 </div>
                 <div class="row">
@@ -53,7 +53,7 @@ if (!empty($_POST["connection_Form_Validation"])) {
     include "Model/functions/PHP/validation.php";
 
     if (validateSignIn()) {
-        $email = $_POST["email_adress"];
+        $email = $_POST["email_address"];
         $password = $_POST["password"];
         $_POST = null;
         
@@ -62,8 +62,8 @@ if (!empty($_POST["connection_Form_Validation"])) {
     
             signIn($email, $password);
     
-            if ($_SESSION["user"]) {
-                
+            if ($_SESSION["user"] === 1) {
+
             } else {
                 redirectScript("profile");
             }

@@ -20,7 +20,7 @@ function connection()
 /**
  *   User connection
  */
-function signIn($email,$pw)
+function signIn($email, $pw)
 {
     include "dbSelection.php";
 
@@ -40,9 +40,9 @@ function signIn($email,$pw)
             if ($isPasswordCorrect) {
                 session_start();
                 
-                $_SESSION["id"] = $adherentFound["adh_id"];
-                $_SESSION["LastName"] = $adherentFound["adh_nom"];
-                $_SESSION["FirstName"] = $adherentFound["adh_prenom"];
+                $_SESSION["id"] = $treasurerFound["adh_id"];
+                $_SESSION["LastName"] = $treasurerFound["adh_nom"];
+                $_SESSION["FirstName"] = $treasurerFound["adh_prenom"];
                 $_SESSION["user"] = 1;
                 
                 return;
@@ -64,8 +64,8 @@ function signIn($email,$pw)
             $_SESSION["ZipCode"] = $adherentFound["adh_cp"];
             $_SESSION["Tel"] = $adherentFound["adh_num"];
             $_SESSION["Email"] = $adherentFound["adh_email"];
-            $_SESSION["League"] = $adherentFound["lg_nom"];
-            $_SESSION["user"] = 0;
+            $_SESSION["Club"] = $adherentFound["club_nom"];
+            $_SESSION["user"] = 2;
             
             return;
         } else {

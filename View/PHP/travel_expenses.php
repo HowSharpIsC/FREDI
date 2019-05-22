@@ -16,6 +16,21 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                         <p>Déclarez vos frais de déplacements</p>
                     </div>
                 </div>
+                <div class="row" id="reason">
+                    <div class="col-auto">
+                        <label for="reason">Motif:</label>
+                    </div>
+                    <div class="col-auto">
+                        <select id="slctReason" name="reason">
+                            <option value=0>--Choisissez le motif--</option>
+                            <option value=1>Réunion</option>
+                            <option value=2>Compétition régionale</option>
+                            <option value=3>Compétition nationale</option>
+                            <option value=4>Compétition internationale</option>
+                            <option value=5>Stage</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-auto">
                         <label for="date">Date de l'événement : </label>
@@ -31,15 +46,15 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                         <label for="journey">Trajet :</label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="journey" name="journey" placeholder="Metz-Paris" required>
+                        <input type="text" id="journey" name="journey" placeholder="ex: Metz-Paris" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-auto">
-                        <label for="fraisKm">Kilomètres : </label>
+                        <label for="fraisKm">Distance : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="kilometers" name="km" placeholder=332 size=2>
+                        <input type="text" id="kilometers" name="km" placeholder="ex: 332" size=2>
                         <span>km</span>
                     </div>
                 </div>
@@ -63,7 +78,7 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                         <label for="lodging">Hébergement : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="lodging" name="lodging" placeholder=50 size=2>
+                        <input type="text" id="lodging" name="lodging" placeholder="ex: 50" size=2>
                         <span>€</span>
                     </div>
                 </div>
@@ -72,7 +87,7 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                         <label for="food">Repas : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="food" name="food" placeholder=5 size=2>
+                        <input type="text" id="food" name="food" placeholder="ex: 5" size=2>
                         <span>€</span>
                     </div>
                 </div>
@@ -81,7 +96,7 @@ if (empty($_SESSION) || !$_SESSION["user"] === 0) {
                         <label for="toll">Péage : </label>
                     </div>
                     <div class="col-auto">
-                        <input type="text" id="toll" name="toll" placeholder=26 size=2>
+                        <input type="text" id="toll" name="toll" placeholder="ex: 26" size=2>
                         <span>€</span>
                     </div>
                 </div>
@@ -101,7 +116,9 @@ var divPower = document.getElementById("power");
 var slctPower = document.getElementById("slctPower");
 var km = document.getElementById("kilometers");
 var validation = document.getElementById("validation");
+var slctReason = document.getElementById("slctReason");
 
+validation.addEventListener("click", validateReason);
 validation.addEventListener("click", validatePower);
 validation.addEventListener("click", validateKm);
 
@@ -119,28 +136,38 @@ km.addEventListener("keyup", function() {
 <?php
 
 if (!empty($_POST["travel_expenses_validation"])) {
-    $date = $_POST["date"];
-    $journey = $_POST["journey"];
-    $power = $_POST["power"];
-    $km = $_POST["km"];
-    $lodging = $_POST["lodging"];
-    $food = $_POST["food"];
-    $toll = $_POST["toll"];
 
-    $_POST = null;
+    include "Model/functions/PHP/validation.php";
 
-    try {
+    if (validateExpenses()) {
+        $reason = $_POST["reason"];
+        $date = $_POST["date"];
+        $journey = $_POST["journey"];
+        $power = $_POST["power"];
+        $km = $_POST["km"];
+        $lodging = $_POST["lodging"];
+        $food = $_POST["food"];
+        $toll = $_POST["toll"];
+
+        $_POST = null;
+
         include "Model/dal/dbExpenses.php";
         include "Model/functions/PHP/expenses.php";
 
-        $km = kilometerCost($km, $power);
+        $pricingSystem = kilometerCost($km, $power);
+        $kmCost = $pricingSystem[0];
+        $rate = $pricingSystem[1];
 
-        expenseStatement($date, $journey, $km, $lodging, $food, $toll);
+        try {
+            expenseStatement(
+                $reason, $date, $journey, $km, $kmCost,
+                $rate, $lodging, $food, $toll
+            );
 
-        redirectScript("travel_expenses");
-
-    } catch (Exception $e) {
-        echo $e->getMessage();
+            redirectScript("travel_expenses");
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
 

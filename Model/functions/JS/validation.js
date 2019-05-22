@@ -16,6 +16,15 @@ function validatePw()
     }
 }
 
+function validateReason()
+{
+    if (slctReason.value == 0) {
+        slctReason.setCustomValidity("Un motif doit être saisi");
+    } else {
+        slctReason.setCustomValidity("");
+    }
+}
+
 function validatePower()
 {
     if (km.value == "" || isNaN(km.value)) {
