@@ -2,7 +2,7 @@
 
 session_start();
 
-if (empty($_SESSION) || !$_SESSION["user"] === 0) {
+if (empty($_SESSION) || !$_SESSION["user"] === 2) {
     redirectPhp("connection_form");
 }
 
