@@ -5,3 +5,5 @@ composer.lock
 
 View/Ressources/Cerfa/*
 View/Ressources/ExpensesBills/*
+
+*.svg

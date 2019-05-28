@@ -1,96 +1,108 @@
 <?php
 
-if (empty($_SESSION) || !$_SESSION["user"] === 2) {
-    redirectPhp("connection_form");
+if (!$_SESSION["user"] === 2) {
+    include "../../Model/functions/PHP/pages.php";
+    redirectScript("login");
 }
 
-require "Model/functions/PHP/signOut.php";
+require "../../Model/functions/PHP/signOut.php";
 ?>
 
 <html>
     <div class="container">
         <div class="row">
-            <div class="col-auto">
+            <div class="col-2">
                 <label for="LastName"> Nom :</label>
             </div>
             <div class="col-auto">
                 <label for="LastName" name="actual"> <?php echo $_SESSION["LastName"] ?> </label>
             </div>
             <div class="col-auto" name="modify" hidden>
-                <input type="text" id="LastName" value = <?php echo $_SESSION["LastName"] ?>>
+                <input type="text" id="LastName" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["LastName"] ?>>
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-auto">
+            <div class="col-2">
                 <label for="FirstName"> Prénom :</label>
             </div>
             <div class="col-auto">
                 <label for="FirstName" name="actual"> <?php echo $_SESSION["FirstName"] ?> </label>
             </div>
             <div class="col-auto" name="modify" hidden>
-                <input type="text" id="FirstName" value = <?php echo $_SESSION["FirstName"] ?>>
+                <input type="text" id="FirstName" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["FirstName"] ?>>
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-auto">
+            <div class="col-2">
                 <label for="Adress"> Adresse :</label>
             </div>
             <div class="col-auto">
                 <label for="Adress" name="actual"> <?php echo $_SESSION["Address"] ?> </label>
             </div>
             <div class="col-auto" name="modify" hidden>
-                <input type="text" id="Adress" value = <?php echo $_SESSION["Address"] ?>>
+                <input type="text" id="Adress" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["Address"] ?>>
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-auto">
+            <div class="col-2">
                 <label for="City"> Ville :</label>
             </div>
             <div class="col-auto">
                 <label for="City" name="actual"> <?php echo $_SESSION["City"] ?> </label>
             </div>
             <div class="col-auto" name="modify" hidden>
-                <input type="text" id="City" value = <?php echo $_SESSION["City"] ?>>
+                <input type="text" id="City" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["City"] ?>>
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-auto">
+            <div class="col-2">
                 <label for="ZipCode"> Code postal :</label>
             </div>
             <div class="col-auto">
                 <label for="ZipCode" name="actual"> <?php echo $_SESSION["ZipCode"] ?> </label>
             </div>
             <div class="col-auto" name="modify" hidden>
-                <input type="text" id="ZipCode" value = <?php echo $_SESSION["ZipCode"] ?>>
+                <input type="text" id="ZipCode" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["ZipCode"] ?>>
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-auto">
+            <div class="col-2">
                 <label for="Tel"> Téléphone :</label>
             </div>
             <div class="col-auto">
                 <label for="Tel" name="actual"> <?php echo $_SESSION["Tel"] ?> </label>
             </div>
             <div class="col-auto" name="modify" hidden>
-                <input type="text" id="Telephone" value = <?php echo $_SESSION["Tel"] ?>>
+                <input type="text" id="Telephone" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["Tel"] ?>>
             </div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-auto">
+            <div class="col-2">
                 <label for="Email"> Adresse e-mail :</label>
             </div>
             <div class="col-auto">
                 <label for="Email" name="actual"> <?php echo $_SESSION["Email"] ?> </label>
             </div>
             <div class="col-auto" name="modify" hidden>
-                <input type="text" id="Email" value = <?php echo $_SESSION["Email"] ?>>
+                <input type="text" id="Email" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["Email"] ?>>
             </div>
         </div>
+        <br>
         <div class="row">
+            <div class="col-2">
+                <label for="League" name="actual"> Club :  </label>
+            </div>
             <div class="col-auto">
-                <label for="League" name="actual"> Club : <?php echo $_SESSION["Club"] ?> </label>
+                <label for="Email" name="actual"> <?php echo $_SESSION["Club"] ?> </label>
             </div>
         </div>
+        <br>
         <div class="row">
             <div class="col-auto">
                 <input type="button" id="ModifyUserData" name="actual" value="Modifier" class="btn btn-primary">
@@ -111,7 +123,6 @@ require "Model/functions/PHP/signOut.php";
             </form>
         </div>
     </div>
-    <div>
 </html>
 
 <?php

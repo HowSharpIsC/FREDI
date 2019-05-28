@@ -1,35 +1,42 @@
 <html>
-    <div>
-        <form id="connectionForm" name="user connection form" action="" method="POST">
-            <div class="container">
-                <div class="row">
-                    <div class="col-auto">
-                        <p>Se connecter</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-auto">
-                        <label for="email">Adresse mail : </label>
-                    </div>
-                    <div class="col-auto">
-                        <input type="text" id="mail" name="email_address" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-auto">
-                        <label for="password">Mot de passe :</label>
-                    </div>
-                    <div class="col-auto">
-                        <input type="password" id="pw" name="password" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-auto">
-                        <input type="submit" id="validation" name="connection_Form_Validation" value="Connexion" class="btn btn-primary">
-                    </div>
-                </div>
+    <div class="card">
+        <div class="card-header">
+            <div id="header">
+                <p> Bienvenue sur l'espace de connexion de la maison des ligues </p>
             </div>
-        </form>
+        </div>
+        <div class="card-body">
+            <form id="connectionForm" name="user connection form" action="" method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-auto">
+                            <p>Se connecter</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <label for="email">Adresse mail : </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" id="mail" name="email_address" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <label for="password">Mot de passe :</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="password" id="pw" name="password" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto">
+                            <input type="submit" id="validation" name="connection_Form_Validation" value="Connexion" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </html>
 

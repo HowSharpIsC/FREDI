@@ -11,6 +11,6 @@ function signOut()
     session_destroy();
 
     // Redirecting user to homepage
-    redirectScript("connection_form");
+    redirectScript("login");
 }
 ?>
