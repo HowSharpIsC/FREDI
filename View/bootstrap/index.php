@@ -1,5 +1,3 @@
-<html lang="fr">
-
 <?php
 
 session_start();
@@ -27,6 +25,9 @@ if (empty($_SESSION)) {
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+  <!-- Custom styles for tables -->
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
   <!-- Field validation Javascript -->
   <script src="../../Model/functions/JS/validation.js"></script>
 
@@ -42,10 +43,9 @@ if (empty($_SESSION)) {
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+          <img src="../../View/Ressources/logoM2L.jpg" alt="M2L logo" width=90/>
         </div>
-        <div class="sidebar-brand-text mx-3">FREDI</div>
       </a>
 
       <!-- Divider -->
@@ -72,7 +72,7 @@ if (empty($_SESSION)) {
 
       <!-- Nav Item - travel expenses read -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="index.php?page=travelExpensesRead">
           <i class="fas fa-fw fa-table"></i>
           <span>Consulter des frais</span></a>
       </li>
@@ -97,6 +97,8 @@ if (empty($_SESSION)) {
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
+        <div class="sidebar-brand-text mx-3">Frais de déplacement et de remise d'impôts</div>
+
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
@@ -114,7 +116,7 @@ if (empty($_SESSION)) {
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="index.php?page=profile">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -184,11 +186,22 @@ if (empty($_SESSION)) {
         <div class="modal-body">Cliquez sur "Se déconnecter" si vous êtes sûr(e) de vouloir mettre fin à votre session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-          <a class="btn btn-primary" href="login.html">Se déconnecter</a>
+          <form id="disconnectionForm" name="user disconnection form" action="" method="POST">
+            <input type="submit" id="signOut" name="signOut" value="Déconnexion" class="btn btn-primary">
+          </form>
         </div>
       </div>
     </div>
   </div>
+
+    <?php
+
+    if (!empty($_POST["signOut"])) {
+        include "../../Model/functions/PHP/signOut.php";
+        signOut();
+    }
+
+    ?>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -199,6 +212,13 @@ if (empty($_SESSION)) {
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

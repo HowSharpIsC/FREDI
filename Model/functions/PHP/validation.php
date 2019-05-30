@@ -32,4 +32,21 @@ function validateExpenses()
     return $valid;
 }
 
+function checkSession()
+{
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+}
+
+function checkAdherent()
+{
+    checkSession();
+    
+    if (empty($_SESSION) || !$_SESSION["user"] === 2) {
+        include "../../Model/functions/PHP/pages.php";
+        redirectScript("login");
+    }
+}
+
 ?>

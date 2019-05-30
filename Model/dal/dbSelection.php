@@ -78,4 +78,30 @@ function clubSelection($id)
 
     return $result;
 }
+
+function expensesSelection($id)
+{
+    $pdo = connection();
+
+    $sql = "SELECT frs_date,frs_trjt,frs_km,frs_hbg,frs_repas,frs_peage
+            FROM frais
+            WHERE adh_id = :id
+            ORDER BY frs_date";
+    
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute(
+        [
+            "id" => $id
+        ]
+    );
+
+    $result = $stmt->fetchAll();
+
+    $stmt = null;
+    $pdo = null;
+
+    return $result;
+}
+
 ?>

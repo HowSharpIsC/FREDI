@@ -34,4 +34,22 @@ function kilometerCost($km, $power)
 
     return $pricingSystem;
 }
+
+function getAdherentExpenses($id)
+{
+    include "../../Model/dal/dbSelection.php";
+
+    $expenses = expensesSelection($id);
+
+    for ($i=0; $i < count($expenses); $i++) { 
+        echo "<tr>";
+
+        for ($j=0; $j < 6; $j++) {
+            $value = $expenses[$i][$j];
+            echo "<td> $value </td>";
+        }
+        echo "</tr>";
+    }
+}
+
 ?>

@@ -1,10 +1,11 @@
 <?php
 
-if (empty($_SESSION) || !$_SESSION["user"] === 2) {
-    redirectPhp("login");
-}
+require "../../Model/functions/PHP/validation.php";
+
+checkAdherent();
 
 ?>
+
 <html>
     <form id="travelExpenses" name="travel expenses form" action="" method="POST">
         <div class="row" id="reason">

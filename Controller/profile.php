@@ -1,11 +1,9 @@
 <?php
 
-if (!$_SESSION["user"] === 2) {
-    include "../../Model/functions/PHP/pages.php";
-    redirectScript("login");
-}
+require "../../Model/functions/PHP/validation.php";
 
-require "../../Model/functions/PHP/signOut.php";
+checkAdherent();
+
 ?>
 
 <html>
@@ -116,22 +114,9 @@ require "../../Model/functions/PHP/signOut.php";
             <div class="col-auto" name="cerfa">
                 <input type="button" id="cerfa" value="Télécharger CERFA" class="btn btn-primary">
             </div>
-            <form id="disconnectionForm" name="user disconnection form" action="" method="POST">
-                <div class="col-auto" name="signOut">
-                    <input type="submit" id="signOut" name="signOut" value="Déconnexion" class="btn btn-primary">
-                </div>
-            </form>
         </div>
     </div>
 </html>
-
-<?php
-
-if (!empty($_POST["signOut"])) {
-    signOut();
-}
-
-?>
 
 <script>
 
