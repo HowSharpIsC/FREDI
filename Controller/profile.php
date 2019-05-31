@@ -7,195 +7,69 @@ checkAdherent();
 ?>
 
 <html>
-    <div class="container">
-        <div class="row">
-            <div class="col-2">
-                <label for="LastName"> Nom :</label>
-            </div>
-            <div class="col-auto">
+    <div class="col-lg-12">
+        <form role="form" id="modificationForm" name="user data modification form" action="" method="POST">
+            <div class="form-group row">
+                <label class="col-md-2" for="LastName"> Nom :</label>
                 <label for="LastName" name="actual"> <?php echo $_SESSION["LastName"] ?> </label>
+                <input type="text" id="LastName" name="lastName" class="form-control col-md-3 bg-light border-1 small" value = <?php echo $_SESSION["LastName"] ?> hidden>
             </div>
-            <div class="col-auto" name="modify" hidden>
-                <input type="text" id="LastName" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["LastName"] ?>>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-2">
-                <label for="FirstName"> Prénom :</label>
-            </div>
-            <div class="col-auto">
+            <div class="form-group row">
+                <label class="col-md-2" for="FirstName"> Prénom :</label>
                 <label for="FirstName" name="actual"> <?php echo $_SESSION["FirstName"] ?> </label>
+                <input type="text" id="FirstName" name="firstName" class="form-control col-md-3 bg-light border-1 small" value = <?php echo $_SESSION["FirstName"] ?> hidden>
             </div>
-            <div class="col-auto" name="modify" hidden>
-                <input type="text" id="FirstName" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["FirstName"] ?>>
+            <div class="form-group row">
+                <label class="col-md-2" for="Address"> Adresse :</label>
+                <label for="Address" name="actual"> <?php echo $_SESSION["Address"] ?> </label>
+                <input type="text" id="Address" name="address" class="form-control col-md-3 bg-light border-1 small" value = <?php echo $_SESSION["Address"] ?> hidden>
             </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-2">
-                <label for="Adress"> Adresse :</label>
-            </div>
-            <div class="col-auto">
-                <label for="Adress" name="actual"> <?php echo $_SESSION["Address"] ?> </label>
-            </div>
-            <div class="col-auto" name="modify" hidden>
-                <input type="text" id="Adress" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["Address"] ?>>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-2">
-                <label for="City"> Ville :</label>
-            </div>
-            <div class="col-auto">
+            <div class="form-group row">
+                <label class="col-md-2" for="City"> Ville :</label>
                 <label for="City" name="actual"> <?php echo $_SESSION["City"] ?> </label>
+                <input type="text" id="City" name="city" class="form-control col-md-3 bg-light border-1 small" value = <?php echo $_SESSION["City"] ?> hidden>
             </div>
-            <div class="col-auto" name="modify" hidden>
-                <input type="text" id="City" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["City"] ?>>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-2">
-                <label for="ZipCode"> Code postal :</label>
-            </div>
-            <div class="col-auto">
+            <div class="form-group row">
+                <label class="col-md-2" for="ZipCode"> Code postal :</label>
                 <label for="ZipCode" name="actual"> <?php echo $_SESSION["ZipCode"] ?> </label>
+                <input type="text" id="ZipCode" name="zipCode" class="form-control col-md-3 bg-light border-1 small" value = <?php echo $_SESSION["ZipCode"] ?> hidden>
             </div>
-            <div class="col-auto" name="modify" hidden>
-                <input type="text" id="ZipCode" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["ZipCode"] ?>>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-2">
-                <label for="Tel"> Téléphone :</label>
-            </div>
-            <div class="col-auto">
+            <div class="form-group row">
+                <label class="col-md-2" for="Tel"> Téléphone :</label>
                 <label for="Tel" name="actual"> <?php echo $_SESSION["Tel"] ?> </label>
+                <input type="text" id="Telephone" name="telephone" class="form-control col-md-3 bg-light border-1 small" value = <?php echo $_SESSION["Tel"] ?> hidden>
             </div>
-            <div class="col-auto" name="modify" hidden>
-                <input type="text" id="Telephone" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["Tel"] ?>>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-2">
-                <label for="Email"> Adresse e-mail :</label>
-            </div>
-            <div class="col-auto">
+            <div class="form-group row">
+                <label class="col-md-2" for="Email"> Adresse e-mail :</label>
                 <label for="Email" name="actual"> <?php echo $_SESSION["Email"] ?> </label>
+                <input type="text" id="Email" name="email" class="form-control col-md-3 bg-light border-1 small" value = <?php echo $_SESSION["Email"] ?> hidden>
             </div>
-            <div class="col-auto" name="modify" hidden>
-                <input type="text" id="Email" class="form-control bg-light border-1 small" value = <?php echo $_SESSION["Email"] ?>>
+            <div class="form-group row">
+                <label class="col-md-2" for="League" name="actual"> Club :  </label>
+                <label for="League" name="actual"> <?php echo $_SESSION["Club"] ?> </label>
             </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-2">
-                <label for="League" name="actual"> Club :  </label>
-            </div>
-            <div class="col-auto">
-                <label for="Email" name="actual"> <?php echo $_SESSION["Club"] ?> </label>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-auto">
-                <input type="button" id="ModifyUserData" name="actual" value="Modifier" class="btn btn-primary">
-            </div>
-            <div class="col-auto" name="modify" hidden>
-                <input type="button" id="RegisterUserData" value="Enregistrer" class="btn btn-primary">
-            </div>
-            <div class="col-auto" name="modify" hidden>
-                <input type="button" id="cancelModifications" value="Annuler" class="btn btn-primary">
-            </div>
-            <div class="col-auto" name="cerfa">
-                <input type="button" id="cerfa" value="Télécharger CERFA" class="btn btn-primary">
-            </div>
-        </div>
+            <br>
+            <div class="form-group row">
+                <input type="button" id="ModifyUserData" name="actual" value="Modifier" class="btn btn-primary mr-3">
+                <input type="submit" id="RegisterUserData" name="RegisterUserData" value="Enregistrer" class="btn btn-primary mr-3" hidden>
+                <input type="button" id="cancelModifications" value="Annuler" class="btn btn-primary mr-3" hidden>
+                <div name="cerfa">
+                    <input type="button" id="cerfa" value="Télécharger CERFA" class="btn btn-primary">
+                </div>
+            </div>                
+        </form>
     </div>
 </html>
 
-<script>
+<?php
 
-var modify = document.getElementById("ModifyUserData");
-var register = document.getElementById("RegisterUserData");
-var cancel = document.getElementById("cancelModifications");
+if (!empty($_POST["RegisterUserData"])) {
+    include "../../Model/dal/dbAdherentMod.php";
+    include "../../Model/functions/PHP/update.php";
+    modifyAdherentData();
+    updateAdherent();
+}
 
-modify.addEventListener("mouseup", function(){
+?>
 
-    var toShow = document.getElementsByName("modify");
-    toShow.forEach(elementToShow => {
-        elementToShow.hidden = false;
-    });
-
-    var toHide = document.getElementsByName("actual");
-    toHide.forEach(elementToHide => {
-        elementToHide.hidden = true;
-    });
-});
-
-var lName = document.getElementById("LastName").value;
-var fName = document.getElementById("FirstName").value;
-
-register.addEventListener("mouseup", function(){
-
-    var postalAdress = document.getElementById("Adress").value;
-    var location = document.getElementById("City").value;
-    var zCode = document.getElementById("ZipCode").value;
-    var tel = document.getElementById("Telephone").value;
-    var mail = document.getElementById("Email").value;
-
-    $.ajax({
-        url: "Model/dal/dbAdherentMod.php",
-        method: "POST",
-        data: { lastName: lName, firstName: fName, adress: postalAdress,
-            city: location, zipCode: zCode, telephone: tel, email: mail },
-        dataType: "text",
-        success: function() {
-            var toShow = document.getElementsByName("modify");
-            toShow.forEach(elementToHide => {
-                elementToHide.hidden = true;
-            });
-
-            var toHide = document.getElementsByName("actual");
-            toHide.forEach(elementToShow => {
-                elementToShow.hidden = false;
-            });
-
-            alert("Les modifications ont bien été prises en compte," +
-                " vous pourrez les voir lors de votre prochaine connexion.");
-        }
-    });
-});
-
-cancel.addEventListener("mouseup", function(){
-
-    var toShow = document.getElementsByName("modify");
-    toShow.forEach(elementToHide => {
-        elementToHide.hidden = true;
-    });
-
-    var toHide = document.getElementsByName("actual");
-    toHide.forEach(elementToShow => {
-        elementToShow.hidden = false;
-    });
-});
-
-var cerfa = document.getElementById("cerfa");
-var filledCerfa = "View/Ressources/CERFA/" + lName + "-" + fName + "-" + 
-    new Date().getFullYear() + ".pdf";
-
-cerfa.addEventListener("mouseup", function() {
-    $.ajax({
-        url: "Model/PDF/ghostfly/pdf-forms-filler/example/pdfGeneration.php",
-        method: "POST",
-        dataType: "text",
-        success: function() {
-            window.open(filledCerfa, 'Download');
-        }
-    });
-});
-</script>
+<script src="../../Model/functions/JS/modification.js"></script>

@@ -15,10 +15,10 @@ if (validateSignIn()) {
 
         signIn($email, $password);
 
-        if ($_SESSION["user"] === 1) {
-
-        } else {
+        if ($_SESSION["user"] === 1 || $_SESSION["user"] === 2) {
             redirectScript("index");
+        } else {
+            redirectScript("login");
         }
 
     } catch (Exception $e) {

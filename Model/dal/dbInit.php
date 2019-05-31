@@ -40,9 +40,11 @@ function signIn($email, $pw)
             if ($isPasswordCorrect) {
                 session_start();
                 
-                $_SESSION["id"] = $treasurerFound["adh_id"];
-                $_SESSION["LastName"] = $treasurerFound["adh_nom"];
-                $_SESSION["FirstName"] = $treasurerFound["adh_prenom"];
+                $_SESSION["id"] = $treasurerFound["trs_id"];
+                $_SESSION["LastName"] = $treasurerFound["trs_nom"];
+                $_SESSION["FirstName"] = $treasurerFound["trs_prenom"];
+                $_SESSION["Tel"] = $treasurerFound["trs_num"];
+                $_SESSION["Email"] = $treasurerFound["trs_email"];
                 $_SESSION["user"] = 1;
                 
                 return;
