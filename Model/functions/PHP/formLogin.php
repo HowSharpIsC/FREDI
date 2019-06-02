@@ -1,8 +1,6 @@
 <?php
-/**
- * Test if connection button has been activated
- */
-require "validation.php";
+
+require "Model/functions/PHP/validation.php";
 
 if (validateSignIn()) {
     $email = $_POST["email_address"];
@@ -10,19 +8,20 @@ if (validateSignIn()) {
     $_POST = null;
     
     try {
-        include "../../Model/dal/dbInit.php";
+        include "Model/dal/dbInit.php";
         include "pages.php";
 
         signIn($email, $password);
 
         if ($_SESSION["user"] === 1 || $_SESSION["user"] === 2) {
-            redirectScript("index");
+            redirectScript("index.php");
         } else {
-            redirectScript("login");
+            redirectScript("login.php");
         }
 
     } catch (Exception $e) {
-        echo $e->getMessage();
+        $error = $e->getMessage();
+        echo "<div class='alert alert-danger' role='alert'>$error</div>";
     }
 }
 ?>

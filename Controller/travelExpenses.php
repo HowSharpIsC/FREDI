@@ -1,7 +1,5 @@
 <?php
 
-require "../../Model/functions/PHP/validation.php";
-
 checkAdherent();
 
 ?>
@@ -143,8 +141,6 @@ km.addEventListener("keyup", function() {
 
 if (!empty($_POST["travel_expenses_validation"])) {
 
-    include "Model/functions/PHP/validation.php";
-
     if (validateExpenses()) {
         $reason = $_POST["reason"];
         $date = $_POST["date"];
@@ -170,7 +166,7 @@ if (!empty($_POST["travel_expenses_validation"])) {
                 $rate, $lodging, $food, $toll
             );
 
-            redirectScript("travel_expenses");
+            redirectScript("index.php?page=travelExpenses");
         } catch (Exception $e) {
             echo $e->getMessage();
         }

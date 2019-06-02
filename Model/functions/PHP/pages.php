@@ -15,8 +15,8 @@ function redirectPhp($page)
 function redirectScript($page)
 {
     echo '<script language="javascript">window.location.href = "' . 
-        $page . '.php"</script>';
-    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $page . '.php">';
+        $page . '"</script>';
+    echo '<META HTTP-EQUIV="refresh" content="0";URL=' . $page . '>';
 }
 
 ?>

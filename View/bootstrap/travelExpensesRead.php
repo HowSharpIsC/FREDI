@@ -7,7 +7,7 @@
 
     <div id="travelExpensesTable">
      <?php 
-     require "../../Controller/travelExpensesRead.php"; 
+     require "Controller/travelExpensesRead.php"; 
      ?>
    </div>
 

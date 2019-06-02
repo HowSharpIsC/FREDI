@@ -105,4 +105,26 @@ function expensesSelection($id)
     return $result;
 }
 
+function expensesToDealWith()
+{
+    $pdo = connection();
+
+    $sql = "SELECT adh_id, frs_date,frs_trjt,frs_km,frs_hbg,frs_repas,frs_peage
+            FROM frais NATURAL JOIN adherents
+            WHERE frs_peageV is null or frs_repasV is null or frs_hbgV is null or 
+                  frs_kmV is null or frs_trjtV is null
+            ORDER BY frs_date";
+    
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute();
+
+    $result = $stmt->fetchAll();
+
+    $stmt = null;
+    $pdo = null;
+
+    return $result;
+}
+
 ?>

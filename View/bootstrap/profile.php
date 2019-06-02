@@ -9,9 +9,9 @@
     <?php
 
     if ($_SESSION["user"] === 1) {
-        include "../../Controller/treasurer.php";
+        include "Controller/treasurer.php";
     } else if ($_SESSION["user"] === 2) {
-        include "../../Controller/profile.php";
+        include "Controller/profile.php";
     }
     
     ?>

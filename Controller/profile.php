@@ -1,7 +1,5 @@
 <?php
 
-require "../../Model/functions/PHP/validation.php";
-
 checkAdherent();
 
 ?>
@@ -64,12 +62,12 @@ checkAdherent();
 <?php
 
 if (!empty($_POST["RegisterUserData"])) {
-    include "../../Model/dal/dbAdherentMod.php";
-    include "../../Model/functions/PHP/update.php";
+    include "Model/dal/dbAdherentMod.php";
+    include "Model/functions/PHP/update.php";
     modifyAdherentData();
     updateAdherent();
 }
 
 ?>
 
-<script src="../../Model/functions/JS/modification.js"></script>
+<script src="Model/functions/JS/modification.js"></script>

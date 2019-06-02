@@ -45,7 +45,7 @@ function checkAdherent()
     
     if (empty($_SESSION) || !$_SESSION["user"] === 2) {
         include "../../Model/functions/PHP/pages.php";
-        redirectScript("login");
+        redirectScript("login.php");
     }
 }
 

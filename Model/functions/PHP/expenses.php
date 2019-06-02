@@ -37,7 +37,7 @@ function kilometerCost($km, $power)
 
 function getAdherentExpenses($id)
 {
-    include "../../Model/dal/dbSelection.php";
+    include "Model/dal/dbSelection.php";
 
     $expenses = expensesSelection($id);
 
@@ -50,6 +50,30 @@ function getAdherentExpenses($id)
         }
         echo "</tr>";
     }
+}
+
+function getAllAdherentExpenses()
+{    
+    include "Model/dal/dbSelection.php";
+
+    $expenses = expensesToDealWith();
+
+    for ($i=0; $i < count($expenses); $i++) { 
+        echo "<tr>";
+        echo '<form class="text-center" id="travelExpensesManagement" name="travelExpensesManagementForm" action="#" method="POST">';
+
+        for ($j=1; $j < 7; $j++) {
+            $value = $expenses[$i][$j];
+            echo "<td><label name='". $i ."'> $value </label></td>";
+        }
+        echo '<td>
+                <input type="submit" id="AcceptExpenses" name="'. $i .'" value="Valider" class="btn btn-primary mr-1">
+                <input type="submit" id="RefuseExpenses" name="'. $i .'" value="Refuser" class="btn btn-primary mr-1">
+             </td>';
+        echo "</form>";
+        echo "</tr>";
+    }
+    return $expenses;
 }
 
 ?>

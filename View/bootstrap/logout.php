@@ -21,7 +21,7 @@
 <?php
 
 if (!empty($_POST["signOut"])) {
-    include "../../Model/functions/PHP/signOut.php";
+    include "Model/functions/PHP/signOut.php";
     signOut();
 }
 

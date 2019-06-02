@@ -1,7 +1,5 @@
 <?php
 
-require "../../Model/functions/PHP/validation.php";
-
 checkAdherent();
 
 ?>
@@ -37,7 +35,7 @@ checkAdherent();
                 </tfoot>
                 <tbody>
                     <?php
-                        require "../../Model/functions/PHP/expenses.php";
+                        require "Model/functions/PHP/expenses.php";
                         getAdherentExpenses($_SESSION["id"]);
                     ?>
                 </tbody>

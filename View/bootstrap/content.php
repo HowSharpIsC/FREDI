@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <?php
 
-    require "../../Model/functions/PHP/pages.php";
+    require "Model/functions/PHP/pages.php";
 
     if (empty($_GET)) {
         include "profile.php";
