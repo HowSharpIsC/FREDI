@@ -1,16 +1,14 @@
 <?php
 
-session_start();
-
-require '../../../../EXCEL/autoload.php';
-require '../../../../dal/dbExpenses.php';
-require '../../../../dal/dbSelection.php';
+require 'Model/EXCEL/autoload.php';
+require 'Model/dal/dbExpenses.php';
+require 'Model/dal/dbSelection.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
-$spreadsheet = $reader->load("noteDeFrais.xls");
+$spreadsheet = $reader->load("Model/EXCEL/phpoffice/phpspreadsheet/samples/noteDeFrais.xls");
 
 $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xls($spreadsheet);
 
@@ -46,7 +44,7 @@ $sheet->setCellValue('A9', $cellClub);
  * I Lodging
  * J Total
  */
-$expenses = getExpenses();
+$expenses = getValidatedExpenses();
 $newRow = 14;
 $cells = array();
 
@@ -110,7 +108,7 @@ $cellTotal = 'J' . $newRow;
 $cellTotalValue = "=SUM(J14:J". ($newRow-1) .")";
 $sheet->setCellValue($cellTotal, $cellTotalValue);
 
-$path = "../../../../../View/Ressources/ExpensesBills/";
+$path = "View/Ressources/ExpensesBills/";
 $fileName = $_SESSION["LastName"] . $_SESSION["FirstName"] . Date("Y");
 
 $writer->save($path . $fileName . ".xls");

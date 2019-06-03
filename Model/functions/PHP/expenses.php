@@ -37,8 +37,6 @@ function kilometerCost($km, $power)
 
 function getAdherentExpenses($id)
 {
-    include "Model/dal/dbSelection.php";
-
     $expenses = expensesSelection($id);
 
     for ($i=0; $i < count($expenses); $i++) { 
@@ -46,7 +44,16 @@ function getAdherentExpenses($id)
 
         for ($j=0; $j < 6; $j++) {
             $value = $expenses[$i][$j];
-            echo "<td> $value </td>";
+
+            echo "<td ";
+
+            if ($expenses[$i][6] == 1) {
+                echo "class='bg-success'";
+            } else {
+                echo "class='bg-danger'";
+            }
+            
+            echo "> <span class='text-dark'>$value</span></td>";
         }
         echo "</tr>";
     }

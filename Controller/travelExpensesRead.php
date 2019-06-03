@@ -2,13 +2,17 @@
 
 checkAdherent();
 
+require "Model/EXCEL/phpoffice/phpspreadsheet/samples/index.php";
+
 ?>
 
 <html>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Vos frais</h6>
+            <h6 class="m-0 font-weight-bold text-primary float-left">Vos frais</h6>
+            <span class="float-right">Frais validé</span><div class="square-v float-right mr-2"></div>
+            <span class="float-right mr-5">Frais refusé</span><div class="square-r float-right mr-2"></div>
           </div>
           <div class="card-body">
             <div class="table-responsive">

@@ -83,7 +83,8 @@ function expensesSelection($id)
 {
     $pdo = connection();
 
-    $sql = "SELECT frs_date, frs_trjt, frs_km, frs_hbg, frs_repas, frs_peage
+    $sql = "SELECT frs_date, frs_trjt, frs_km, frs_hbg, frs_repas, frs_peage,
+                   frs_trjtV, frs_kmV, frs_hbgV, frs_repasV, frs_peageV
             FROM frais
             WHERE adh_id = :id
             ORDER BY frs_date";

@@ -35,7 +35,7 @@ function expenseStatement($reason, $date, $journey, $km, $kmCost, $rate,
     $pdo = null;
 }
 
-function getExpenses()
+function getValidatedExpenses()
 {
     include_once "dbInit.php";
     
@@ -46,7 +46,7 @@ function getExpenses()
     $sql = "SELECT frs_date, mtf_libelle, frs_trjt, frs_distance, frs_tauxKm, 
                 frs_km, frs_hbg, frs_repas, frs_peage
             FROM frais NATURAL JOIN motifs
-            WHERE adh_id = :id";
+            WHERE adh_id = :id AND frs_kmV = 1";
 
     $stmt = $pdo->prepare($sql);
 
