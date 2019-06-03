@@ -47,7 +47,7 @@ checkAdherent();
                 <label for="fraisKm">Distance </label>
             </div>
             <div class="col-auto">
-                <input type="text" id="kilometers" name="km" class="form-control bg-light border-1 small" placeholder="ex: 332" size=2>
+                <input type="text" id="kilometers" name="km" class="form-control bg-light border-1 small" placeholder="ex: 332" size=5>
             </div>
             <div class="col-auto">
                 <span>km</span>

@@ -76,4 +76,30 @@ function getAllAdherentExpenses()
     return $expenses;
 }
 
+function getAdherentExpensesDealtWith()
+{
+    include "Model/dal/dbSelection.php";
+
+    $expenses = expensesDealtWith();
+
+    for ($i=0; $i < count($expenses); $i++) { 
+        echo "<tr>";
+
+        for ($j=0; $j < 7; $j++) {
+            $value = $expenses[$i][$j];
+
+            echo "<td ";
+
+            if ($expenses[$i][7] == 1) {
+                echo "class='bg-success'";
+            } else {
+                echo "class='bg-danger'";
+            }
+            
+            echo "> <span class='text-dark'>$value</span></td>";
+        }
+        echo "</tr>";
+    }
+}
+
 ?>

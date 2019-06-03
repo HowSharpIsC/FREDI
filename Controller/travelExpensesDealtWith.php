@@ -8,7 +8,9 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Frais déclarés</h6>
+            <h6 class="m-0 font-weight-bold text-primary float-left">Frais traités</h6>
+            <span class="float-right">Frais validé</span><div class="square-v float-right mr-2"></div>
+            <span class="float-right mr-5">Frais refusé</span><div class="square-r float-right mr-2"></div>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -21,7 +23,7 @@
                     <th>Hébergement</th>
                     <th>Repas</th>
                     <th>Peage</th>
-                    <th>Sélectionner</th>
+                    <th>Trésorier</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -32,13 +34,13 @@
                     <th>Hébergement</th>
                     <th>Repas</th>
                     <th>Peage</th>
-                    <th>Sélectionner</th>
+                    <th>Trésorier</th>
                   </tr>
                 </tfoot>
                 <tbody>
                     <?php
                         require "Model/functions/PHP/expenses.php";
-                        $expenses = getAllAdherentExpenses();
+                        getAdherentExpensesDealtWith();
                     ?>
                 </tbody>
               </table>
@@ -52,10 +54,3 @@
         <i class="fas fa-angle-up"></i>
       </a>
 </html>
-
-<?php
-
-require "Model/functions/PHP/formTravelExpensesToDealWith.php";
-
-
-?>
