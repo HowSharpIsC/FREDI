@@ -1,3 +1,9 @@
+<?php
+
+checkTreasurer();
+
+?>
+
 <html>
     <div class="container">
         <div class="row">

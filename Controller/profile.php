@@ -64,6 +64,7 @@ checkAdherent();
 if (!empty($_POST["RegisterUserData"])) {
     include "Model/dal/dbAdherentMod.php";
     include "Model/functions/PHP/update.php";
+    
     modifyAdherentData();
     updateAdherent();
 }

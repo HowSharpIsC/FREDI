@@ -8,6 +8,7 @@
   <div class="row">
     <?php
 
+    // Check if the user is a treasurer or an adherent then load their profile page
     if ($_SESSION["user"] === 1) {
         include "Controller/treasurer.php";
     } else if ($_SESSION["user"] === 2) {

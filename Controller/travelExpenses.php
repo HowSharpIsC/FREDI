@@ -8,7 +8,7 @@ checkAdherent();
     <form id="travelExpenses" name="travel expenses form" action="" method="POST">
         <div class="row" id="reason">
             <div class="col-4">
-                <label for="reason">Motif </label>
+                <label for="reason">Motif</label>
             </div>
             <div class="col-auto">
                 <select id="slctReason" name="reason" class="bg-light py-2 rounded">
@@ -113,64 +113,10 @@ checkAdherent();
     </form>
 </html>
 
-<script>
-
-var divPower = document.getElementById("power");
-var slctPower = document.getElementById("slctPower");
-var km = document.getElementById("kilometers");
-var validation = document.getElementById("validation");
-var slctReason = document.getElementById("slctReason");
-
-validation.addEventListener("click", validateReason);
-validation.addEventListener("click", validatePower);
-validation.addEventListener("click", validateKm);
-
-km.addEventListener("keyup", function() {
-
-    if (km.value != "" && km.value != 0 && !isNaN(km.value)) {
-        divPower.hidden = false;
-    } else {
-        slctPower.value = 0;
-        divPower.hidden = true;
-    }
-});
-
-</script>
+<script src="Model/functions/JS/formTravelExpenses.js"></script>
 
 <?php
 
-if (!empty($_POST["travel_expenses_validation"])) {
-
-    if (validateExpenses()) {
-        $reason = $_POST["reason"];
-        $date = $_POST["date"];
-        $journey = $_POST["journey"];
-        $power = $_POST["power"];
-        $km = $_POST["km"];
-        $lodging = $_POST["lodging"];
-        $food = $_POST["food"];
-        $toll = $_POST["toll"];
-
-        $_POST = null;
-
-        include "Model/dal/dbExpenses.php";
-        include "Model/functions/PHP/expenses.php";
-
-        $pricingSystem = kilometerCost($km, $power);
-        $kmCost = $pricingSystem[0];
-        $rate = $pricingSystem[1];
-
-        try {
-            expenseStatement(
-                $reason, $date, $journey, $km, $kmCost,
-                $rate, $lodging, $food, $toll
-            );
-
-            redirectScript("index.php?page=travelExpenses");
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
-}
+require "Model/functions/PHP/formTravelExpenses.php";
 
 ?>

@@ -49,4 +49,14 @@ function checkAdherent()
     }
 }
 
+function checkTreasurer()
+{
+    checkSession();
+    
+    if (empty($_SESSION) || !$_SESSION["user"] === 1) {
+        include "../../Model/functions/PHP/pages.php";
+        redirectScript("login.php");
+    }
+}
+
 ?>
