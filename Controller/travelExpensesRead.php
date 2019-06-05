@@ -3,6 +3,7 @@
 checkAdherent();
 
 require "Model/EXCEL/phpoffice/phpspreadsheet/samples/index.php";
+generateExcel();
 
 ?>
 
