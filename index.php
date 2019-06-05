@@ -8,6 +8,6 @@ if (empty($_SESSION)) {
     header("Location: login.php");    
 }
 
-require "View\bootstrap\homePage.php";
+require "View\bootstrap\index.php";
 
 ?>
