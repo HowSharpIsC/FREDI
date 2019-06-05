@@ -10,7 +10,7 @@ function expenseStatement($reason, $date, $journey, $km, $kmCost, $rate,
     $pdo = connection();
 
     $sql = "INSERT INTO frais (frs_date, frs_trjt, frs_km, frs_hbg, frs_repas, 
-                                frs_peage,adh_id, mtf_id, frs_distance, frs_tauxKm)
+                                frs_peage, adh_id, mtf_id, frs_distance, frs_tauxKm)
             VALUES  (:expDate, :journey, :kmCost, :lodging, :food, :toll, :adhId, 
                     :mtfId, :distance, :rate)";
 

@@ -54,3 +54,14 @@ require "Model/EXCEL/phpoffice/phpspreadsheet/samples/index.php";
         <i class="fas fa-angle-up"></i>
       </a>
 </html>
+
+<?php
+
+if (isset($_POST["ExepnsesBillUpload"]) && !empty($_POST["ExepnsesBillUpload"])) {
+
+    $tmpName = $_FILES["uploadExpensesBill"]["tmp_name"];
+    $path = "View/Ressources/ExpensesBills/" . $_SESSION["LastName"] . $_SESSION["FirstName"] . Date("Y") . ".pdf";
+    move_uploaded_file($tmpName, $path);
+}
+
+?>

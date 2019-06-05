@@ -51,16 +51,12 @@ cancel.addEventListener("mouseup", function(){
 });
 
 var cerfa = document.getElementById("cerfa");
-var filledCerfa = "../../View/Ressources/CERFA/" + lName + "-" + fName + "-" + 
+var filledCerfa = "View/Ressources/CERFA/" + lName + "-" + fName + "-" + 
     new Date().getFullYear() + ".pdf";
 
 cerfa.addEventListener("mouseup", function() {
-    $.ajax({
-        url: "Model/PDF/ghostfly/pdf-forms-filler/example/pdfGeneration.php",
-        method: "POST",
-        dataType: "text",
-        success: function() {
-            window.open(filledCerfa, 'Download');
-        }
+    $.post("Model/PDF/ghostfly/pdf-forms-filler/example/pdfGeneration.php"
+    ).done(function() {
+        window.open(filledCerfa, 'Download');
     });
 });
