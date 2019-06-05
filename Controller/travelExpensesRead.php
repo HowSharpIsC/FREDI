@@ -2,8 +2,12 @@
 
 checkAdherent();
 
-require "Model/EXCEL/phpoffice/phpspreadsheet/samples/index.php";
-generateExcel();
+try {
+    include "Model/EXCEL/phpoffice/phpspreadsheet/samples/index.php";
+    generateExcel();
+} catch (\Throwable $th) {
+  //throw $th;
+}
 
 ?>
 

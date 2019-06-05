@@ -36,7 +36,7 @@ function treasurerSelection($email)
 
     // User data recovery
     $sql = "SELECT trs_id, trs_nom, trs_prenom, trs_num, trs_email, trs_mdp
-            FROM tresoriers
+            FROM tresorier
             WHERE trs_email = :email";
 
     $stmt = $pdo->prepare($sql);

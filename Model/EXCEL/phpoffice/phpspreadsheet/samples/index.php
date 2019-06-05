@@ -3,7 +3,8 @@
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-function generateExcel() {
+function generateExcel()
+{
 
     include 'Model/EXCEL/autoload.php';
     include 'Model/dal/dbExpenses.php';
@@ -114,6 +115,8 @@ function generateExcel() {
     $fileName = $_SESSION["LastName"] . $_SESSION["FirstName"] . Date("Y");
 
     $writer->save($path . $fileName . ".xls");
+
+    return;
 }
 
 ?>
