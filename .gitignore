@@ -1,9 +1,9 @@
 #Ignoring Composer content
-/vendor
-composer.json
-composer.lock
-
-View/Ressources/Cerfa/*
-View/Ressources/ExpensesBills/*
+#/vendor
+#composer.json
+#composer.lock
+#
+#View/Ressources/Cerfa/*
+#View/Ressources/ExpensesBills/*
 
 *.svg
