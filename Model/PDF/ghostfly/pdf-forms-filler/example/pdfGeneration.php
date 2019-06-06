@@ -1,14 +1,12 @@
 <?php
 
-session_start();
-
-require '../../../../PDF/autoload.php';
-$string = file_get_contents("format.txt");
-
 use FormFiller\PDF\Converter\Converter;
 use FormFiller\PDF\Field;
 use FormFiller\PDF\PDFGenerator;
 
+require "Model/PDF/autoload.php";
+
+$string = file_get_contents("Model/PDF/ghostfly/pdf-forms-filler/example/format.txt");
 $converter = new Converter($string);
 $converter->loadPagesWithFieldsCount();
 $coords = $converter->formatFieldsAsJSON();
@@ -26,7 +24,6 @@ foreach ($fields as $field) {
 $lastName = $_SESSION["LastName"];
 $firstName = $_SESSION["FirstName"];
 $year = date("Y", time());
-
 $data = [
   'z1'    => [
       "size"  => 9,
@@ -192,9 +189,8 @@ $data = [
   ],
 ];
 
-$original = getcwd() . "/cerfa.pdf";
-$dest = "../../../../../View/Ressources/CERFA/$lastName-$firstName-$year.pdf";
-
+$original = "Model/PDF/ghostfly/pdf-forms-filler/example/cerfa.pdf";
+$dest = "View/Ressources/CERFA/$lastName-$firstName-$year.pdf";
 $pdfGenerator = new PDFGenerator($fieldEntities, $data, 'P', 'pt', 'A4');
 
 try {
@@ -203,5 +199,3 @@ try {
     echo "error" . $e;
     die();
 }
-
-echo "done";

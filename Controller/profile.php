@@ -2,6 +2,10 @@
 
 checkAdherent();
 
+if (Date("Y-m-d") > (Date("Y") . '-12-24')) {
+    include "Model/PDF/ghostfly/pdf-forms-filler/example/pdfGeneration.php";
+}
+
 ?>
 
 <html>
@@ -52,9 +56,9 @@ checkAdherent();
                 <input type="submit" id="RegisterUserData" name="RegisterUserData" value="Enregistrer" class="btn btn-primary mr-3" hidden>
                 <input type="button" id="cancelModifications" value="Annuler" class="btn btn-primary mr-3" hidden>
 
-                <div name="cerfa">
-                    <input type="button" id="cerfa" value="Télécharger CERFA" class="btn btn-primary" 
-                        <?php if (Date("Y-m-d") < (Date("Y") . '-12-24')) {echo "hidden";} ?>>
+                <div name="cerfa" <?php if (Date("Y-m-d") < (Date("Y") . '-12-24')) {echo "hidden";} ?>>
+                    <a href='<?php echo "View/Ressources/CERFA/" . $_SESSION["LastName"] . $_SESSION["FirstName"] . Date("Y") . ".pdf" ?>' 
+                        class="btn btn-primary">Télécharger CERFA</a> 
                 </div>
             </div>
         </form>
