@@ -49,6 +49,7 @@ function getAdherentExpenses($id)
 
             if ($expenses[$i][6] == 1) {
                 echo "class='bg-success'";
+            } else if ($expenses[$i][6] == 2) {
             } else {
                 echo "class='bg-danger'";
             }

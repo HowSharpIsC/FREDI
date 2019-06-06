@@ -18,6 +18,7 @@ try {
             <h6 class="m-0 font-weight-bold text-primary float-left">Vos frais</h6>
             <span class="float-right">Frais validé</span><div class="square-v float-right mr-2"></div>
             <span class="float-right mr-5">Frais refusé</span><div class="square-r float-right mr-2"></div>
+            <span class="float-right mr-5">Frais non-traité</span><div class="square-n float-right mr-2"></div>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -26,7 +27,7 @@ try {
                   <tr>
                     <th>Date</th>
                     <th>Trajet</th>
-                    <th>Distance</th>
+                    <th>Coût distance</th>
                     <th>Hébergement</th>
                     <th>Repas</th>
                     <th>Peage</th>
@@ -36,7 +37,7 @@ try {
                   <tr>
                     <th>Date</th>
                     <th>Trajet</th>
-                    <th>Distance</th>
+                    <th>Coût distance</th>
                     <th>Hébergement</th>
                     <th>Repas</th>
                     <th>Peage</th>
