@@ -133,7 +133,7 @@ function expensesDealtWith()
 
     $sql = "SELECT frs_date, frs_trjt, frs_km, frs_hbg, frs_repas, frs_peage, trs_id,
                    frs_trjtV, frs_kmV, frs_hbgV, frs_repasV, frs_peageV
-            FROM frais NATURAL JOIN tresoriers
+            FROM frais NATURAL JOIN tresorier
             WHERE frs_peageV is not null or frs_repasV is not null or 
                   frs_hbgV is not null or frs_kmV is not null or 
                   frs_trjtV is not null

@@ -51,10 +51,12 @@ checkAdherent();
                 <input type="button" id="ModifyUserData" name="actual" value="Modifier" class="btn btn-primary mr-3">
                 <input type="submit" id="RegisterUserData" name="RegisterUserData" value="Enregistrer" class="btn btn-primary mr-3" hidden>
                 <input type="button" id="cancelModifications" value="Annuler" class="btn btn-primary mr-3" hidden>
+
                 <div name="cerfa">
-                    <input type="button" id="cerfa" value="Télécharger CERFA" class="btn btn-primary">
+                    <input type="button" id="cerfa" value="Télécharger CERFA" class="btn btn-primary" 
+                        <?php if (Date("Y-m-d") < (Date("Y") . '-12-24')) {echo "hidden";} ?>>
                 </div>
-            </div>                
+            </div>
         </form>
     </div>
 </html>
