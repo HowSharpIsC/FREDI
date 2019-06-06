@@ -111,8 +111,8 @@ function expensesToDealWith()
 
     $sql = "SELECT adh_id, frs_date, frs_trjt, frs_km, frs_hbg, frs_repas, frs_peage
             FROM frais NATURAL JOIN adherents
-            WHERE frs_peageV is null or frs_repasV is null or frs_hbgV is null or 
-                  frs_kmV is null or frs_trjtV is null
+            WHERE frs_peageV = 2 or frs_repasV = 2 or frs_hbgV = 2 or 
+                  frs_kmV = 2 or frs_trjtV = 2
             ORDER BY frs_date";
     
     $stmt = $pdo->prepare($sql);
