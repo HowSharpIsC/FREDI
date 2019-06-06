@@ -21,11 +21,9 @@ function validateExpenses()
 {
     $valid = false;
 
-    if (!(empty($_POST["date"]) || empty($_POST["journey"]) 
-        || $_POST["reason"] == 0)
-    ) {
+    if (!empty($_POST["journey"]) && $_POST["reason"] != 0) {
         if (empty($_POST["power"]) == empty($_POST["km"])) {
-                $valid = true;
+            $valid = true;
         }
     }
 
