@@ -7,11 +7,7 @@ function adherentSelection($email)
     $pdo = connection();
 
     // User data recovery
-    $sql = "SELECT adh_id, adh_nom, adh_prenom, adh_adr,
-    			   adh_ville, adh_cp, adh_num, adh_email,
-    			   adh_mdp, club_nom
-    		FROM adherents NATURAL JOIN club
-    		WHERE adh_email = :email";
+    $sql = "call adherentSelection(:email)";
     
     $stmt = $pdo->prepare($sql);
 
@@ -35,9 +31,7 @@ function treasurerSelection($email)
     $pdo = connection();
 
     // User data recovery
-    $sql = "SELECT trs_id, trs_nom, trs_prenom, trs_num, trs_email, trs_mdp
-            FROM tresorier
-            WHERE trs_email = :email";
+    $sql = "call tresorierSelection(:email)";
 
     $stmt = $pdo->prepare($sql);
 
@@ -59,9 +53,7 @@ function clubSelection($id)
 {
     $pdo = connection();
 
-    $sql = "SELECT club_nom, club_adresse, club_codePostal, club_ville
-            FROM club NATURAL JOIN adherents
-            WHERE adh_id = :id";
+    $sql = "call clubSelection(:id)";
     
     $stmt = $pdo->prepare($sql);
 
